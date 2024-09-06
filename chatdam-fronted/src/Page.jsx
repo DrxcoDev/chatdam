@@ -34,6 +34,14 @@ function App() {
 
         </div>
       </div>
+
+      <div className="mt-[200px] flex justify-center items-center">
+        <div className="">
+          <h1 className="mb-[50px] text-4xl pl-36">Prices</h1>
+          <Card title="Its FREE" description="Esto es una carta"/>
+        </div>
+        
+      </div>
       
     </main>
     
