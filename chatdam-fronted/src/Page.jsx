@@ -25,10 +25,10 @@ function App() {
         </div>
       </div>
 
-      <div className="mx-5 mt-[100px] flex">
+      <div className="mx-20 mt-[100px] flex">
         <div>
-          <h1 className='text-4xl ml-3 font-medium text-pink-600'>About us</h1>
-          <p className='w-[400px] ml-3 my-5 font-bold text-2xl text-pink-400'>ChatDam is a fast software of messenger. Is important your privacity, by this we have a secret AI for SPAMS.</p>
+          <h1 className='text-4xl ml-3 font-medium '>About us</h1>
+          <p className='w-[400px] ml-3 my-5 font-light text-2xl '>ChatDam is a fast open source software of messenger. Is important your privacity, by this we have a secret AI for SPAMS.</p>
         </div>
         <div className="">
 
