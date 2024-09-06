@@ -1,0 +1,7 @@
+.Button {
+    display: flex;
+    justify-content: center; /* Centra horizontalmente */
+    align-items: center; /* Centra verticalmente */
+    padding: 20px;
+    background: red;
+}

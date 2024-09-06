@@ -1,4 +1,5 @@
 import Card from './components/UI/cards'
+import Button from './components/Buttons/Button'
 
 function App() {
   return (
@@ -19,7 +20,19 @@ function App() {
         <div className="my-[150px]">
           <Card title="Talk with everyone" description="Esto es una carta"/>
         </div>
-        
+        <div className='flex items-center justify-center'>
+          <a className='p-5 pl-4 w-22 bg-[#5fc3e4] rounded-lg text-white' href="https://google.es">Read More</a>
+        </div>
+      </div>
+
+      <div className="mx-5 mt-[100px] flex">
+        <div>
+          <h1 className='text-4xl ml-3 font-medium text-pink-600'>About us</h1>
+          <p className='w-[400px] ml-3 my-5 font-bold text-2xl text-pink-400'>ChatDam is a fast software of messenger. Is important your privacity, by this we have a secret AI for SPAMS.</p>
+        </div>
+        <div className="">
+
+        </div>
       </div>
       
     </main>
