@@ -1,0 +1,13 @@
+.card-container {
+    width: auto;
+    height: auto;
+    max-width: 800px;
+    border-radius: 10px;
+    
+}
+
+.card {
+    display: flex;
+    justify-content: center; /* Centra horizontalmente */
+    align-items: center; /* Centra verticalmente */
+}
