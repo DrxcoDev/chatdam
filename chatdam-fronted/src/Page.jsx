@@ -1,10 +1,11 @@
 import Card from './components/UI/cards'
 import Button from './components/Buttons/Button'
+import Footer from './components/Footer'
 
 function App() {
   return (
     <main>
-      <header className="flex mx-5 my-5 md:items-center">
+      <header className="flex mx-5 my-5 md:items-center bg-white sticky top-0 h-[100px]">
         <h1 className="text-2xl ml-3 font-medium">Chatdam</h1>
         <div className="ms:ml-[50px] md:ml-[100px]">
           <ul className="flex">
@@ -37,12 +38,13 @@ function App() {
 
       <div className="mt-[200px] flex justify-center items-center">
         <div className="">
-          <h1 className="mb-[50px] text-4xl pl-36">Prices</h1>
+          <h1 className="mb-[50px] text-4xl pl-40">Prices</h1>
           <Card title="Its FREE" description="Esto es una carta"/>
         </div>
         
       </div>
       
+      <Footer />
     </main>
     
   );
