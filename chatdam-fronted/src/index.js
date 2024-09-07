@@ -1,13 +1,28 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
+
+// Principal Pages 
+
 import App from './Page';
+import Login from './Pages/user/login'
+
 import reportWebVitals from './reportWebVitals';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <App />
+   <Router>
+      <Routes>
+        {/* Definición de rutas */}
+        <Route path="/" element={<App />} />
+        <Route path="/chatdam/login" element={<Login />} />
+        {/* <Route path="/about" element={<About />} /> */}
+        {/* Ruta para manejar páginas no encontradas (404) */}
+        {/* <Route path="*" element={<NotFound />} /> */}
+      </Routes>
+    </Router>
   </React.StrictMode>
 );
 

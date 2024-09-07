@@ -1,6 +1,7 @@
 import Card from './components/UI/cards'
 import Button from './components/Buttons/Button'
 import Footer from './components/Footer'
+import { Link } from 'react-router-dom';
 
 function App() {
   return (
@@ -9,9 +10,11 @@ function App() {
         <h1 className="text-2xl ml-3 font-medium">Chatdam</h1>
         <div className="ms:ml-[50px] md:ml-[100px]">
           <ul className="flex">
-            <li className="ms:mx-3 md:mx-5"><a href="#">Home</a></li>
-            <li className="ms:mx-3 md:mx-5"><a href="#">About</a></li>
-            <li className="ms:mx-3 md:mx-5"><a href="#">Contact</a></li>
+            <li className="ms:mx-3 md:mx-5"><Link to="/">Home</Link></li>
+            <li className="ms:mx-3 md:mx-5"><a href="">About</a></li>
+            <li className="ms:mx-3 md:mx-5"><Link to="/contact">Contact</Link></li>
+            <li className="ms:mx-3 md:mx-5"><Link to="/chatdam/login">Login</Link></li>
+            <li className="ms:mx-3 md:mx-5"><Link>Register</Link></li>
           </ul>
         </div>
 
