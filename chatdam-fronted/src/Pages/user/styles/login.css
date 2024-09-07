@@ -6,6 +6,20 @@
     margin: 0;
     padding: 0;
   }
+
+  @media (max-width: 650px) {
+    .login-container {
+      height: 100vh;
+      padding: 20px;
+      background: #e55d87; /* fallback for old browsers */
+      background: -webkit-linear-gradient(to right, #e55d87, #5fc3e4); /* Chrome 10-25, Safari 5.1-6 */
+      background: linear-gradient(to right, #e55d87, #5fc3e4);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+    }
+  }
   
   .login-container {
     width: 400px;
