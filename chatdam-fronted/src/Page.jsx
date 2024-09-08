@@ -9,7 +9,7 @@ function App() {
       <header className="flex mx-5 my-5 md:items-center bg-white sticky top-0 h-[100px] z-50">
         <h1 className="text-2xl ml-3 font-medium text-black">Chatdam</h1>
         <div className="ms:ml-[50px] md:ml-[100px]">
-          <ul className="flex">
+          <ul className="flex -mt-2">
             <li className="ms:mx-3 md:mx-5"><Link to="/">Home</Link></li>
             <li className="ms:mx-3 md:mx-5"><a href="">About</a></li>
             <li className="ms:mx-3 md:mx-5"><Link to="/contact">Contact</Link></li>
