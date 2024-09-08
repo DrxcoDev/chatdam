@@ -5,30 +5,30 @@ import React, { useEffect, useState } from 'react';
 import { signInWithPopup, onAuthStateChanged, signOut } from 'firebase/auth';
 import { Link } from 'react-router-dom';
 import { useNavigate } from 'react-router-dom'; // Importa el hook useNavigate
+import { useUser } from './userContext.js'; // Importa el hook useUser
 
 function Login(){
 
-    const [user, setUser] = useState(null);
-  const navigate = useNavigate(); // Hook para navegar programáticamente
+    const { user, setUser } = useUser(); // Obtén el usuario y la función para establecer el usuario del contexto
+  const navigate = useNavigate();
 
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (user) => {
       if (user) {
-        setUser(user);
+        setUser(user); // Guarda la información del usuario en el contexto
         navigate('/dashboard'); // Redirige a la página de Dashboard después del login
-      } else {
-        setUser(null);
       }
     });
 
     return () => unsubscribe();
-  }, [navigate]); // Agrega navigate como dependencia
+  }, [setUser, navigate]);
 
   const signInWithGithub = () => {
     signInWithPopup(auth, githubProvider)
       .then((result) => {
         console.log(result.user);
-        navigate('/dashboard'); // Redirige después de la autenticación
+        setUser(result.user); // Guarda la información del usuario en el contexto
+        navigate('/dashboard');
       })
       .catch((error) => {
         console.error(error);
@@ -39,7 +39,7 @@ function Login(){
     signOut(auth)
       .then(() => {
         console.log('Usuario desconectado');
-        setUser(null);
+        setUser(null); // Borra la información del usuario del contexto
       })
       .catch((error) => console.error(error));
   };
