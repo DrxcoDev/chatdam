@@ -7,6 +7,7 @@ import './index.css';
 import App from './Page';
 import Login from './Pages/user/login'
 import GitHubResponse from './Pages/Extras/githubresponse.js'
+import Dashboard from './Pages/user/dashboard.jsx'
 
 import reportWebVitals from './reportWebVitals';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
@@ -19,6 +20,7 @@ root.render(
         {/* Definición de rutas */}
         <Route path="/" element={<App />} />
         <Route path="/chatdam/login" element={<Login />} />
+        <Route path="/dashboard" element={<Dashboard />} />
         <Route path="/chatdam/login/method/github" element={<GitHubResponse />} />
         {/* <Route path="/about" element={<About />} /> */}
         {/* Ruta para manejar páginas no encontradas (404) */}
