@@ -5,6 +5,8 @@ import { signOut } from 'firebase/auth'; // Importa la función signOut de Fireb
 import { auth } from '../../firebase.js'; // Importa la instancia de auth de Firebase
 import { useNavigate } from 'react-router-dom'; // Importa el hook useNavigate
 
+import Header from './components/Dashboard/Header.jsx'
+
 function Dashboard() {
   const { user, setUser } = useUser(); // Obtén el usuario y la función para actualizar el usuario del contexto
   const navigate = useNavigate(); // Hook para navegar programáticamente
@@ -21,6 +23,7 @@ function Dashboard() {
 
   return (
     <div>
+        <Header /> {/* Componente Header */}
       <h1>Dashboard</h1>
       {user ? (
         <div>
