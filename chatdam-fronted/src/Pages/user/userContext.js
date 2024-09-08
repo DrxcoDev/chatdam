@@ -1,19 +1,32 @@
 // UserContext.js
-import React, { createContext, useContext, useState } from 'react';
+import React, { createContext, useContext, useEffect, useState } from 'react';
+import { onAuthStateChanged } from 'firebase/auth';
+import { auth } from '../../firebase';
 
-// Crear el contexto
 const UserContext = createContext();
 
-// Proveedor de contexto
+export const useUser = () => useContext(UserContext);
+
 export const UserProvider = ({ children }) => {
-  const [user, setUser] = useState(null); // Estado del usuario
+  const [user, setUser] = useState(null);  // Estado del usuario
+  const [loading, setLoading] = useState(true);  // Estado de carga
+
+  useEffect(() => {
+    const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
+      setUser(currentUser);
+      setLoading(false);  // Deja de cargar después de obtener el usuario
+    });
+
+    return () => unsubscribe();
+  }, []);
+
+  if (loading) {
+    return <div>Cargando...</div>;  // Mostrar "cargando" solo mientras se verifica la autenticación
+  }
 
   return (
-    <UserContext.Provider value={{ user, setUser }}>
+    <UserContext.Provider value={{ user }}>
       {children}
     </UserContext.Provider>
   );
 };
-
-// Hook personalizado para usar el contexto
-export const useUser = () => useContext(UserContext);

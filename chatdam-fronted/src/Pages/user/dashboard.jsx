@@ -5,7 +5,9 @@ import { signOut } from 'firebase/auth'; // Importa la función signOut de Fireb
 import { auth } from '../../firebase.js'; // Importa la instancia de auth de Firebase
 import { useNavigate } from 'react-router-dom'; // Importa el hook useNavigate
 
-import Header from './components/Dashboard/Header.jsx'
+import Header from './components/Dashboard/Header.jsx';
+import PostForm from './Post/PostForm';
+import PostList from './Post/PostList';
 
 
 function Dashboard() {
@@ -67,6 +69,11 @@ function Dashboard() {
                                 {creationDate}</li>
                         </ul>
                     </div>
+                    <div className="w-[400px]">
+                        <PostForm />
+                    </div>
+                    
+                    <PostList />
                 </div>
             
         ) : (
