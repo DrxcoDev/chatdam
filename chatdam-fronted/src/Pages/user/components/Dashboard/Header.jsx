@@ -1,11 +1,19 @@
 import { Link } from 'react-router-dom';
-import React from 'react';
+import React, { useState } from 'react';
 import { useUser } from '../../userContext.js'; // Importa el hook useUser
 import { signOut } from 'firebase/auth'; // Importa la función signOut de Firebase
 import { auth } from '../../../../firebase.js'; // Importa la instancia de auth de Firebase
 import { useNavigate } from 'react-router-dom'; // Importa el hook useNavigate
 
+import Modal from './Profile.jsx';
+
 function Header(){
+
+    const [showModal, setShowModal] = useState(false);
+
+    const toggleModal = () => {
+      setShowModal(!showModal);
+    };
 
     const { user, setUser } = useUser(); // Obtén el usuario y la función para actualizar el usuario del contexto
     const navigate = useNavigate(); // Hook para navegar programáticamente
@@ -31,7 +39,10 @@ function Header(){
                         {user ? (
                             <div>
                                 <button className='ms:mx-3 md:mx-5 text-white' onClick={handleSignOut}>Cerrar sesión</button>
-                                <button className='ms:mx-3 md:mx-5 text-white'>Profile</button>
+                                <button className='ms:mx-3 md:mx-5 text-white' onClick={toggleModal}>Settings</button>
+                                <Modal show={showModal} onClose={toggleModal} title={user.displayName}>
+                                    <p>This is the content of the modal.</p>
+                                </Modal>
                             </div>
                             
                         ) : (
