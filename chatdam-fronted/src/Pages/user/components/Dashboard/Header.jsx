@@ -33,7 +33,7 @@ function Header(){
             <h1 className="text-2xl ml-3 font-medium text-white">Chatdam</h1>
             <div className="ms:ml-[50px] md:ml-[50px]">
                 <ul className="flex -mt-2">
-                    <li className="ms:mx-3 md:mx-5 text-white"><Link to="/">Dashboard</Link></li>
+                    <li className="ms:mx-3 md:mx-5 text-white"><Link to="/dashboard">Dashboard</Link></li>
 
                     <li className='ms:mx-3 md:mx-5 text-white'>
                         {user ? (
