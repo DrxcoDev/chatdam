@@ -2,32 +2,39 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
 
-// Principal Pages 
-
+// Principal Pages
 import App from './Page';
-import Login from './Pages/user/login'
-import GitHubResponse from './Pages/Extras/githubresponse.js'
-import Dashboard from './Pages/user/dashboard.jsx'
-import { UserProvider } from './Pages/user/userContext.js'; // Importa el proveedor de contexto
-
+import Login from './Pages/user/login';
+import GitHubResponse from './Pages/Extras/githubresponse.js';
+import Dashboard from './Pages/user/dashboard.jsx';
+import { UserProvider, useUser } from './Pages/user/userContext.js'; // Importa el proveedor de contexto
 import reportWebVitals from './reportWebVitals';
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
+
+function AppRoutes() {
+  const { user } = useUser(); // Obtener el usuario del contexto
+
+  return (
+    <Routes>
+      {/* Redirige a la página de dashboard si el usuario está autenticado, de lo contrario a la página de login */}
+      <Route path="/" element={<App />} />
+      <Route path="/" element={user ? <Navigate to="/dashboard" /> : <Navigate to="/" />} />
+      <Route path="/chatdam/login" element={<Login />} />
+      <Route path="/dashboard" element={user ? <Dashboard /> : <Navigate to="/" />} />
+      <Route path="/chatdam/login/method/github" element={<GitHubResponse />} />
+      {/* Ruta para manejar páginas no encontradas (404) */}
+      <Route path="*" element={<div>Página no encontrada (404)</div>} />
+    </Routes>
+  );
+}
+
 root.render(
   <React.StrictMode>
     <UserProvider> {/* Envuelve tu aplicación con UserProvider */}
       <Router>
-          <Routes>
-            {/* Definición de rutas */}
-            <Route path="/" element={<App />} />
-            <Route path="/chatdam/login" element={<Login />} />
-            <Route path="/dashboard" element={<Dashboard />} />
-            <Route path="/chatdam/login/method/github" element={<GitHubResponse />} />
-            {/* <Route path="/about" element={<About />} /> */}
-            {/* Ruta para manejar páginas no encontradas (404) */}
-            {/* <Route path="*" element={<NotFound />} /> */}
-          </Routes>
+        <AppRoutes />
       </Router>
     </UserProvider>
   </React.StrictMode>
