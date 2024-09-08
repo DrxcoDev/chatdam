@@ -26,10 +26,14 @@ function Header(){
             <div className="ms:ml-[50px] md:ml-[50px]">
                 <ul className="flex -mt-2">
                     <li className="ms:mx-3 md:mx-5 text-white"><Link to="/">Dashboard</Link></li>
-                    <li className="ms:mx-3 md:mx-5 text-white"><a href="">Profile</a></li>
+
                     <li className='ms:mx-3 md:mx-5 text-white'>
                         {user ? (
-                            <button onClick={handleSignOut}>Cerrar sesión</button>
+                            <div>
+                                <button className='ms:mx-3 md:mx-5 text-white' onClick={handleSignOut}>Cerrar sesión</button>
+                                <button className='ms:mx-3 md:mx-5 text-white'>Profile</button>
+                            </div>
+                            
                         ) : (
                             <p>Cargando...</p>
                         )}
