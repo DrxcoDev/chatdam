@@ -89,6 +89,16 @@ function Dashboard() {
                                     {creationDate}</li>
                             </ul>
                         </div>
+
+                        <div className="">
+                            <div className="">
+                                <img className='rounded-2xl' src="https://i.pinimg.com/736x/8b/c1/07/8bc107b985b5876d988b4a0b0de5bdac.jpg" alt="" />
+                            </div>
+                            <div className="mt-20">
+                                <h1 className='text-slate-400'>Description</h1>
+                                <p className='text-slate-400'>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Ducimus repellat explicabo corporis animi vitae esse quidem assumenda earum quaerat temporibus?</p>
+                            </div>
+                        </div>
                     </div>
                     
                     <div className="w-[400px]">

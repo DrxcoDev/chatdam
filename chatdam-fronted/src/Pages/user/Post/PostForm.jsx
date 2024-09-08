@@ -2,10 +2,11 @@ import React, { useState } from 'react';
 import { db } from '../../../firebase.js';
 import { collection, addDoc, serverTimestamp } from 'firebase/firestore';
 import { useUser } from '../userContext.js'; // Asegúrate de tener un contexto de usuario configurado
+import './textarea.css';
 
 function PostForm() {
   const { user } = useUser();
-  const [postContent, setPostContent] = useState('');
+  const [postContent, setPostContent, label] = useState('');
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -15,6 +16,7 @@ function PostForm() {
       await addDoc(collection(db, 'posts'), {
         content: postContent,
         createdAt: serverTimestamp(),
+        label: label,
         user: {
           uid: user.uid,
           displayName: user.displayName,
@@ -30,7 +32,7 @@ function PostForm() {
   return (
     <form onSubmit={handleSubmit} className="p-4 border-b">
       <textarea
-        className="w-full p-2 border rounded"
+        className="w-full p-2  rounded bg-slate-500 text-slate-900"
         rows="3"
         placeholder="¿Qué está pasando?"
         value={postContent}
