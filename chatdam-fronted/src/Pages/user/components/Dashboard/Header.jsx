@@ -40,6 +40,7 @@ function Header(){
                             <div>
                                 <button className='ms:mx-3 md:mx-5 text-white' onClick={handleSignOut}>Cerrar sesión</button>
                                 <button className='ms:mx-3 md:mx-5 text-white' onClick={toggleModal}>Settings</button>
+                                <Link to="/search" className='mx-5'>Search</Link>
                                 <Modal show={showModal} onClose={toggleModal} title={user.displayName}>
                                     <p>This is the content of the modal.</p>
                                 </Modal>
