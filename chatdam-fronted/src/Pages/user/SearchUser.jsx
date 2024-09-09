@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { db } from '../../firebase'; // Asegúrate de importar tu configuración de Firebase
-import { collection, getDocs, query, where } from 'firebase/firestore';
+import { collection, getDocs, query, where, startAt, endAt } from 'firebase/firestore';
 
 function SearchUser() {
   const [users, setUsers] = useState([]);
@@ -8,10 +8,24 @@ function SearchUser() {
 
   useEffect(() => {
     const fetchUsers = async () => {
-      const q = query(collection(db, 'users'), where('displayName', '>=', searchTerm));
-      const querySnapshot = await getDocs(q);
-      const usersData = querySnapshot.docs.map(doc => doc.data());
-      setUsers(usersData);
+      if (searchTerm.trim() === '') {
+        setUsers([]); // Limpiar la lista si no hay término de búsqueda
+        return;
+      }
+
+      const q = query(
+        collection(db, 'users'),
+        where('displayName', '>=', searchTerm),
+        where('displayName', '<=', searchTerm + '\uf8ff') // Esto asegura que se busque en el rango de términos que empiezan con el término de búsqueda
+      );
+
+      try {
+        const querySnapshot = await getDocs(q);
+        const usersData = querySnapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
+        setUsers(usersData);
+      } catch (error) {
+        console.error('Error al buscar usuarios: ', error);
+      }
     };
 
     fetchUsers();
@@ -27,8 +41,8 @@ function SearchUser() {
       />
       <div>
         {users.length > 0 ? (
-          users.map((user, index) => (
-            <div key={index} className="user-card">
+          users.map((user) => (
+            <div key={user.id} className="user-card">
               <img src={user.photoURL || 'https://via.placeholder.com/150'} alt={user.displayName} className="user-photo" />
               <p>{user.displayName}</p>
             </div>
