@@ -7,7 +7,9 @@ import App from './Page';
 import Login from './Pages/user/login';
 import GitHubResponse from './Pages/Extras/githubresponse.js';
 import Dashboard from './Pages/user/dashboard.jsx';
+import SearchUser from './Pages/user/SearchUser.jsx'
 import { UserProvider, useUser } from './Pages/user/userContext.js'; // Importa el proveedor de contexto
+
 import reportWebVitals from './reportWebVitals';
 import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
 
@@ -24,6 +26,8 @@ function AppRoutes() {
       <Route path="/chatdam/login" element={<Login />} />
       <Route path="/dashboard" element={user ? <Dashboard /> : <Navigate to="/" />} />
       <Route path="/chatdam/login/method/github" element={<GitHubResponse />} />
+      <Route path="/search" element={<SearchUser />} />
+
       {/* Ruta para manejar páginas no encontradas (404) */}
       <Route path="*" element={<div>Página no encontrada (404)</div>} />
     </Routes>

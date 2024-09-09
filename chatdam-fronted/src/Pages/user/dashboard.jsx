@@ -90,7 +90,7 @@ function Dashboard() {
                             </ul>
                         </div>
 
-                        <div className="">
+                        <div className="sticky top-0">
                             <div className="">
                                 <img className='rounded-2xl' src="https://i.pinimg.com/736x/8b/c1/07/8bc107b985b5876d988b4a0b0de5bdac.jpg" alt="" />
                             </div>
